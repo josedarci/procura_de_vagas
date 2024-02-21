@@ -23,7 +23,7 @@ Este projeto é uma aplicação web desenvolvida para auxiliar indivíduos no ge
 
 ## Instalação e Uso
 
-Não é necessária instalação, pois a aplicação é executada diretamente no navegador. Para começar a usar, basta abrir o arquivo `index.html` em um navegador moderno.
+Não é necessária instalação, pois a aplicação é executada diretamente no navegador. Para começar a usar, basta abrir o arquivo `saga.html` em um navegador moderno.
 
 ## Contribuições
 
