@@ -7,7 +7,7 @@
   <!-- Inclua o CSS do Bootstrap no head do seu HTML -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Inclua o JavaScript do Bootstrap e suas dependÍncias antes do fechamento do body -->
+  <!-- Inclua o JavaScript do Bootstrap e suas depend√™ncias antes do fechamento do body -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.7.12/umd.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -34,7 +34,7 @@
 
     h1 {
       margin-left: 120px;
-      /* Ajuste conforme necess·rio para evitar sobreposiÁ„o */
+      /* Ajuste conforme necess√°rio para evitar sobreposi√ß√£o */
     }
 
     svg {
@@ -458,10 +458,10 @@ z" />
 
   <div class="container-fluid">
 
-    <!-- Utilizei a classe d-flex para criar um container flexÌvel e justify-content-between para justificar o conte˙do entre os espaÁos -->
+    <!-- Utilizei a classe d-flex para criar um container flex√≠vel e justify-content-between para justificar o conte√∫do entre os espa√ßos -->
     <div class="d-flex justify-content-between align-items-center my-4">
       <h1>Saga da procura ao emprego</h1>
-      <!-- Bot„o para abrir a janela modal com Ìcone -->
+      <!-- Bot√£o para abrir a janela modal com √≠cone -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#jobModal">
         <i class="fas fa-plus"></i> Adicionar Vaga
       </button>
@@ -505,13 +505,13 @@ z" />
         </tr>
       </thead>
       <tbody>
-        <!-- As linhas da tabela ser„o inseridas aqui -->
+        <!-- As linhas da tabela ser√£o inseridas aqui -->
       </tbody>
     </table>
   </div>
 
 
-  <!-- Estrutura da janela modal com o formul·rio e os inputs -->
+  <!-- Estrutura da janela modal com o formul√°rio e os inputs -->
   <div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -522,9 +522,9 @@ z" />
           </button>
         </div>
         <div class="modal-body">
-          <!-- Formul·rio para nova vaga de emprego -->
+          <!-- Formul√°rio para nova vaga de emprego -->
           <form id="jobForm">
-            <input type="hidden" id="editIndex" value="-1"> <!-- Campo oculto para o Ìndice de ediÁ„o -->
+            <input type="hidden" id="editIndex" value="-1"> <!-- Campo oculto para o √≠ndice de edi√ß√£o -->
             <div class="form-group">
               <label for="company">Empresa:</label>
               <input type="text" class="form-control" id="company" name="company" required>
@@ -579,7 +579,7 @@ z" />
     </div>
   </div>
 
-  <!-- Modal para o Gr·fico -->
+  <!-- Modal para o Gr√°fico -->
   <div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -599,6 +599,15 @@ z" />
 
 
   <script>
+    function deleteJob(index) {
+      var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
+      if (index > -1) {
+        jobsList.splice(index, 1); // Remove a vaga da lista
+      }
+      localStorage.setItem('jobsList', JSON.stringify(jobsList)); // Atualiza o localStorage
+      updateJobsTable(); // Atualiza a tabela
+    }
+
     function updateJobsTable(filterStatus = 'todos') {
       var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
       var tableBody = document.getElementById('jobsTable').getElementsByTagName('tbody')[0];
@@ -609,17 +618,17 @@ z" />
         if (filterStatus === 'todos' || job.status === filterStatus) {
           var row = tableBody.insertRow();
 
-          // CÈlula do bot„o de ediÁ„o
+          // C√©lula do bot√£o de edi√ß√£o
           var editCell = row.insertCell(0);
           var editButton = document.createElement('button');
-          editButton.textContent = index + 1; // Ou qualquer outro identificador que vocÍ esteja usando
-          editButton.className = 'btn btn-info btn-sm'; // Bootstrap classes para estilizaÁ„o
+          editButton.textContent = index + 1; // Ou qualquer outro identificador que voc√™ esteja usando
+          editButton.className = 'btn btn-info btn-sm'; // Bootstrap classes para estiliza√ß√£o
           editButton.onclick = function () {
             openEditModal(index);
           };
           editCell.appendChild(editButton);
 
-          // As cÈlulas para as informaÁıes da vaga
+          // As c√©lulas para as informa√ß√µes da vaga
           row.insertCell(1).innerHTML = job.company;
           row.insertCell(2).innerHTML = job.position;
           row.insertCell(3).innerHTML = job.description;
@@ -629,8 +638,8 @@ z" />
           row.insertCell(7).innerHTML = formatDate(job.responseDate);
           row.insertCell(8).innerHTML = job.status;
 
-          // CÈlula para o bot„o de excluir
-          var deleteCell = row.insertCell(9); // Adiciona a cÈlula do bot„o de excluir na posiÁ„o correta
+          // C√©lula para o bot√£o de excluir
+          var deleteCell = row.insertCell(9); // Adiciona a c√©lula do bot√£o de excluir na posi√ß√£o correta
           var deleteButton = document.createElement("button");
           deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
           deleteButton.classList.add("btn", "btn-danger", "btn-sm");
@@ -643,7 +652,7 @@ z" />
     }
 
     function formatDate(dateString) {
-      if (!dateString) return ''; // Retorna uma string vazia se a data n„o for fornecida
+      if (!dateString) return ''; // Retorna uma string vazia se a data n√£o for fornecida
 
       const [year, month, day] = dateString.split('-');
       return `${day}/${month}/${year}`;
@@ -657,7 +666,7 @@ z" />
         var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
         var statusCounts = {}; // Objeto para armazenar a contagem de cada status
 
-        // Contar o n˙mero de vagas para cada status
+        // Contar o n√∫mero de vagas para cada status
         jobsList.forEach(function (job) {
           if (statusCounts[job.status]) {
             statusCounts[job.status] += 1;
@@ -668,7 +677,7 @@ z" />
 
         var ctx = document.getElementById('statusChart').getContext('2d');
 
-        // Verifique se o gr·fico j· existe. Se sim, destrua-o antes de criar um novo.
+        // Verifique se o gr√°fico j√° existe. Se sim, destrua-o antes de criar um novo.
         if (window.myPieChart) {
           window.myPieChart.destroy();
         }
@@ -713,20 +722,13 @@ z" />
       }
 
 
-      function deleteJob(index) {
-        var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
-        if (index > -1) {
-          jobsList.splice(index, 1); // Remove a vaga da lista
-        }
-        localStorage.setItem('jobsList', JSON.stringify(jobsList)); // Atualiza o localStorage
-        updateJobsTable(); // Atualiza a tabela
-      }
+
 
       function openEditModal(index) {
         var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
         if (index >= 0 && index < jobsList.length) {
           var job = jobsList[index];
-          // Preencher o formul·rio com os dados da vaga
+          // Preencher o formul√°rio com os dados da vaga
           document.getElementById('company').value = job.company;
           document.getElementById('position').value = job.position;
           document.getElementById('description').value = job.description;
@@ -750,10 +752,10 @@ z" />
       function saveJobData(event) {
         event.preventDefault();
 
-        // Obter o Ìndice de ediÁ„o. Se for -1, significa que È uma nova vaga.
+        // Obter o √≠ndice de edi√ß√£o. Se for -1, significa que √© uma nova vaga.
         var editIndex = document.getElementById('editIndex').value;
 
-        // Obter os dados do formul·rio
+        // Obter os dados do formul√°rio
         var jobData = {
           company: document.getElementById('company').value,
           position: document.getElementById('position').value,
@@ -785,37 +787,37 @@ z" />
         // Atualizar a tabela
         updateJobsTable();
 
-        // Limpar o formul·rio e resetar o Ìndice de ediÁ„o
+        // Limpar o formul√°rio e resetar o √≠ndice de edi√ß√£o
         document.getElementById('jobForm').reset();
         document.getElementById('editIndex').value = "-1";
       }
 
 
 
-      // FunÁ„o para atualizar a tabela com os dados salvos
+      // Fun√ß√£o para atualizar a tabela com os dados salvos
 
 
 
 
 
 
-      // Adicionando um ouvinte de evento ao formul·rio
+      // Adicionando um ouvinte de evento ao formul√°rio
       var jobForm = document.getElementById('jobForm');
       if (jobForm) {
         jobForm.addEventListener('submit', saveJobData);
       }
 
-      // Adicionando ouvinte de evento ao bot„o 'Gerar Gr·fico' para abrir a modal
+      // Adicionando ouvinte de evento ao bot√£o 'Gerar Gr√°fico' para abrir a modal
       document.getElementById('generateChartButton').addEventListener('click', function () {
         $('#chartModal').modal('show');
       });
 
-      // Gerar o gr·fico quando a modal estiver totalmente aberta
+      // Gerar o gr√°fico quando a modal estiver totalmente aberta
       $('#chartModal').on('shown.bs.modal', function () {
         updateChart();
       });
 
-      // Atualizar a tabela assim que a p·gina carregar
+      // Atualizar a tabela assim que a p√°gina carregar
       updateJobsTable();
     });
 
@@ -823,7 +825,7 @@ z" />
       var jobsList = JSON.parse(localStorage.getItem('jobsList')) || [];
       if (index >= 0 && index < jobsList.length) {
         var job = jobsList[index];
-        // Preencher o formul·rio com os dados da vaga
+        // Preencher o formul√°rio com os dados da vaga
         document.getElementById('company').value = job.company;
         document.getElementById('position').value = job.position;
         document.getElementById('description').value = job.description;
@@ -839,9 +841,9 @@ z" />
         $('#jobModal').modal('show');
       }
     }
-    // Evento que È acionado quando a modal termina de ser escondida
+    // Evento que √© acionado quando a modal termina de ser escondida
     $('#jobModal').on('hidden.bs.modal', function () {
-      // Resetar o formul·rio
+      // Resetar o formul√°rio
       document.getElementById('jobForm').reset();
 
       // Resetar o valor do campo oculto 'editIndex'
