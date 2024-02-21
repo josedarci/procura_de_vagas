@@ -33,6 +33,4 @@ Contribuições são sempre bem-vindas! Para contribuir, por favor, abra uma iss
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
----
 
-Este `README.md` oferece uma visão geral clara e concisa do seu projeto, incluindo suas principais funcionalidades, tecnologias utilizadas, como usar a aplicação e informações sobre contribuições e licença. Sinta-se à vontade para ajustá-lo conforme a necessidade do seu projeto.
