@@ -1,6 +1,4 @@
-Claro! Aqui está um modelo de `README.md` para o seu projeto "Gerenciador de Candidaturas a Emprego baseado em Web":
 
----
 
 # Gerenciador de Candidaturas a Emprego baseado em Web
 
